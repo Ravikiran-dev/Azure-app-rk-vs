@@ -1,3 +1,7 @@
+using Azure_app_rk_vs.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Azure_app_rk_vs
 {
     public class Program
@@ -5,8 +9,10 @@ namespace Azure_app_rk_vs
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("AzureSqlConnection");
 
             // Add services to the container.
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString ));
             builder.Services.AddRazorPages();
             builder.Services.AddApplicationInsightsTelemetry();
 
