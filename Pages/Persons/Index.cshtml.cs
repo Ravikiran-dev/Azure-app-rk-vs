@@ -11,9 +11,9 @@ namespace Azure_app_rk_vs.Pages_Persons
 {
     public class IndexModel : PageModel
     {
-        private readonly Azure_app_rk_vs.Data.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public IndexModel(Azure_app_rk_vs.Data.AppDbContext context)
+        public IndexModel(AppDbContext context)
         {
             _context = context;
         }
